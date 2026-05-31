@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, Bot, BarChart3, TrendingUp, AlertTriangle, CheckCircle2, Inbox } from "lucide-react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/AdminSidebar";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, Legend, LineChart, Line

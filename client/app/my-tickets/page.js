@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle2, Bot, Inbox, Menu, PlusCircle } from "lucid
 import CustomerSidebar from "../components/CustomerSidebar";
 import Link from "next/link";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "http://smartdesk-f5d4.onrender.com";
 
 function MyTicketsContent() {
   const [tickets, setTickets] = useState([]);

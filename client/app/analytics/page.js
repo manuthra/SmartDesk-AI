@@ -8,7 +8,7 @@ import {
   PieChart, Pie, Cell, Legend, LineChart, Line
 } from "recharts";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "http://smartdesk-f5d4.onrender.com";
 const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"];
 
 export default function AnalyticsPage() {

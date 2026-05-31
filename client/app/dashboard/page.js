@@ -200,8 +200,11 @@ function AdminDashboardContent() {
                   <div className={`status-badge ${ticket.status}`}>{ticket.status}</div>
                 </div>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", fontSize: "12px", color: "var(--text-muted)" }}>
-                  <Mail size={12} />{ticket.email}
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                  <div className="avatar">
+                    {ticket.email.charAt(0).toUpperCase()}
+                  </div>
+                  <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>{ticket.email}</span>
                 </div>
 
                 <div className="ticket-content">

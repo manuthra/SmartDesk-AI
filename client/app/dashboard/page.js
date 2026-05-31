@@ -202,7 +202,7 @@ function AdminDashboardContent() {
 
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
                   <div className="avatar">
-                    {ticket.email.charAt(0).toUpperCase()}
+                    {ticket.email ? ticket.email.charAt(0).toUpperCase() : "?"}
                   </div>
                   <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>{ticket.email}</span>
                 </div>

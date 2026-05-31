@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { Bot } from "lucide-react";
 
-const API = "http://smartdesk-f5d4.onrender.com";
+const API = "https://smartdesk-f5d4.onrender.com";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

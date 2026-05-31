@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { AlertTriangle, CheckCircle2, Bot, Inbox, Search, Menu, TrendingUp, Edit2, Send, X, Mail } from "lucide-react";
 import AdminSidebar from "../components/AdminSidebar";
 
-const API = "http://smartdesk-f5d4.onrender.com";
+const API = "https://smartdesk-f5d4.onrender.com";
 
 function AdminDashboardContent() {
   const [tickets, setTickets] = useState([]);

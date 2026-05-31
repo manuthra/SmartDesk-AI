@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, Bot, Send } from "lucide-react";
 import CustomerSidebar from "../components/CustomerSidebar";
 
-const API = "https://smartdesk-ai-s701.onrender.com";
+const API = "https://smartdesk-f5d4.onrender.co";
 
 export default function CreateTicketPage() {
   const [subject, setSubject] = useState("");

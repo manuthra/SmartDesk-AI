@@ -46,11 +46,17 @@ function AdminDashboardContent() {
 
   useEffect(() => { fetchTickets(); }, []);
 
-  const res = await fetch(`/api/proxy`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ endpoint: `/tickets/${id}/resolve` }),
-  });
+  const resolveTicket = async (id) => {
+    try {
+      const res = await fetch(`/api/proxy`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ endpoint: `/tickets/${id}/resolve` }),
+      });
+      const data = await res.json();
+      if (data.success) fetchTickets();
+    } catch { alert("❌ Server error."); }
+  };
 
   const handleEditReply = (ticket) => {
     setEditingTicket(ticket);
@@ -101,7 +107,6 @@ function AdminDashboardContent() {
 
       <AdminSidebar active="/dashboard" isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* Edit Reply Modal */}
       {editingTicket && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
           <div style={{ background: "var(--bg-secondary)", border: "1px solid var(--border)", borderRadius: "16px", padding: "28px", width: "100%", maxWidth: "560px", maxHeight: "90vh", overflow: "auto" }}>
@@ -195,7 +200,6 @@ function AdminDashboardContent() {
                   <div className={`status-badge ${ticket.status}`}>{ticket.status}</div>
                 </div>
 
-                {/* Customer email */}
                 <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", fontSize: "12px", color: "var(--text-muted)" }}>
                   <Mail size={12} />{ticket.email}
                 </div>

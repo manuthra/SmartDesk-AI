@@ -8,7 +8,7 @@ import {
   PieChart, Pie, Cell, Legend, LineChart, Line
 } from "recharts";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "";
 const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"];
 
 export default function AnalyticsPage() {
@@ -24,7 +24,7 @@ export default function AnalyticsPage() {
 
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch(`${API}/analytics`);
+      const res = await fetch(`/api/proxy?endpoint=/analytics`);
       const data = await res.json();
       setStats(data);
     } catch (e) { console.error(e); }

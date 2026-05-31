@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { AlertTriangle, CheckCircle2, Bot, Inbox, Search, Menu, TrendingUp, Edit2, Send, X, Mail } from "lucide-react";
 import AdminSidebar from "../components/AdminSidebar";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "";
 
 function AdminDashboardContent() {
   const [tickets, setTickets] = useState([]);
@@ -36,7 +36,7 @@ function AdminDashboardContent() {
   const fetchTickets = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${API}/tickets`);
+      const res = await fetch(`/api/proxy?endpoint=/tickets`);
       const data = await res.json();
       const list = Array.isArray(data) ? data : Array.isArray(data.tickets) ? data.tickets : [];
       setTickets(list);
@@ -46,12 +46,11 @@ function AdminDashboardContent() {
 
   useEffect(() => { fetchTickets(); }, []);
 
-  const resolveTicket = async (id) => {
-    try {
-      await fetch(`${API}/tickets/${id}/resolve`, { method: "PUT" });
-      fetchTickets();
-    } catch (e) { console.error(e); }
-  };
+  const res = await fetch(`/api/proxy`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ endpoint: `/tickets/${id}/resolve` }),
+  });
 
   const handleEditReply = (ticket) => {
     setEditingTicket(ticket);
@@ -62,10 +61,13 @@ function AdminDashboardContent() {
     if (!editingTicket) return;
     try {
       setSending(true);
-      const res = await fetch(`${API}/tickets/${editingTicket._id}/send-reply`, {
+      const res = await fetch(`/api/proxy`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reply: editedReply }),
+        body: JSON.stringify({
+          endpoint: `/tickets/${editingTicket._id}/send-reply`,
+          reply: editedReply
+        }),
       });
       const data = await res.json();
       if (data.success) {

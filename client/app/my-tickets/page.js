@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle2, Bot, Inbox, Menu, PlusCircle } from "lucid
 import CustomerSidebar from "../components/CustomerSidebar";
 import Link from "next/link";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "";
 
 function MyTicketsContent() {
   const [tickets, setTickets] = useState([]);
@@ -29,7 +29,7 @@ function MyTicketsContent() {
     try {
       setLoading(true);
       const email = localStorage.getItem("email");
-      const res = await fetch(`${API}/tickets/my?email=${encodeURIComponent(email)}`);
+      const res = await fetch(`/api/proxy?endpoint=/tickets/my&email=${email}`);
       const data = await res.json();
       const list = Array.isArray(data) ? data : Array.isArray(data.tickets) ? data.tickets : [];
       setTickets(list);

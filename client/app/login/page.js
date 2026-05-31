@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { Bot } from "lucide-react";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,7 +17,11 @@ export default function LoginPage() {
     if (!email || !password) { setIsError(true); setMessage("Please fill in all fields"); return; }
     try {
       setLoading(true); setMessage("");
-      const res = await axios.post(`${API}/login`, { email, password });
+      const res = await axios.post(`/api/proxy`, {
+        endpoint: "/login",
+        email,
+        password
+      });
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("name", res.data.user.name);

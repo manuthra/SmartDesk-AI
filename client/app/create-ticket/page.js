@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, Bot, Send } from "lucide-react";
 import CustomerSidebar from "../components/CustomerSidebar";
 
-const API = "https://smartdesk-f5d4.onrender.co";
+const API = "";
 
 export default function CreateTicketPage() {
   const [subject, setSubject] = useState("");
@@ -28,10 +28,10 @@ export default function CreateTicketPage() {
     }
     try {
       setLoading(true);
-      const res = await fetch(`${API}/tickets`, {
+      const res = await fetch(`/api/proxy`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: userEmail, subject, complaint }),
+        body: JSON.stringify({ endpoint: "/tickets", email: userEmail, subject, complaint }),
       });
       const data = await res.json();
       if (data.success) {

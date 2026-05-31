@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { Bot } from "lucide-react";
 
-const API = "https://smartdesk-f5d4.onrender.com";
+const API = "";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -19,7 +19,13 @@ export default function RegisterPage() {
     if (!name || !email || !password) { setIsError(true); setMessage("Please fill in all fields"); return; }
     try {
       setLoading(true); setMessage("");
-      const res = await axios.post(`${API}/register`, { name, email, password, role });
+      const res = await axios.post(`/api/proxy`, {
+        endpoint: "/register",
+        name,
+        email,
+        password,
+        role
+      });
       if (res.data.success) {
         setIsError(false); setMessage("Account created! Redirecting to login...");
         setTimeout(() => { window.location.href = "/login"; }, 1000);

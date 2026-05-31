@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SmartDesk AI V4 🤖
 
 Full role-based AI customer support system.
@@ -20,7 +21,5 @@ npm install --legacy-peer-deps
 npm run dev
 ```
 
-## Important
-Add new backend routes to your Render server:
-- `GET /tickets/my?email=xxx` — returns tickets for that email
-- `POST /tickets/:id/send-reply` — sends edited reply to customer
+ 
+
